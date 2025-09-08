@@ -2,7 +2,9 @@ package dao;
 
 import Model.User;
 
+import java.sql.SQLException;
+
 public interface DaoUserInterface {
-    public void signUp(String username, String password);
-    public void signIn(String username, String password);
+    public User signUp(String username, String password) throws SQLException;
+    public User signIn(String username, String password) throws SQLException;
 }

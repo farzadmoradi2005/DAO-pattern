@@ -1,7 +1,11 @@
 package dao;
 
+import Model.Order;
+
+import java.sql.SQLException;
+
 public interface DaoOrderInterface {
-    public void SubmitOrder(String orderDetails , boolean isTakeaway , int orderPrice );
-    public void editOrder(String orderDetails);
-    public void cancelOrder();
+    public void SubmitOrder(Order order) throws SQLException;
+    public void editOrder(String orderDetails , Order order) throws SQLException;
+    public void cancelOrder(Order order) throws SQLException;
 }
