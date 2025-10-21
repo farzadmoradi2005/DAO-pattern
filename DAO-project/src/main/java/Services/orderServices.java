@@ -14,4 +14,11 @@ public class orderServices {
             throw new SQLException("error" , e);
         }
     }
+    public void editOrder(String orderDetails, Order order) throws ServiceExeption{
+        try {
+            dao.editOrder(orderDetails , order);
+        }catch (Exception e){
+            throw new ServiceExeption("error");
+        }
+    }
 }
