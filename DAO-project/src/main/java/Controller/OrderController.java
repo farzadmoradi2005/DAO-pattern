@@ -1,6 +1,8 @@
 package Controller;
 
 import Model.Order;
+import Services.ServiceExeption;
+import Services.orderServices;
 import dao.DaoOrderClass;
 import dao.DaoOrderInterface;
 
@@ -10,11 +12,15 @@ import java.time.LocalDateTime;
 
 public class OrderController {
     private Order order;
-    private DaoOrderInterface dao = new DaoOrderClass();
+    private orderServices os = new orderServices();
     public void SubmitOrder(String orderDetails , boolean isTakeaway , int orderPrice ) throws SQLException{
         order = new Order(orderDetails, isTakeaway, orderPrice);
         order.setUser(UserController.getCurrentUser());
-        dao.SubmitOrder(order);
+        try{
+        os.submitOrder(order);}
+        catch (ServiceExeption e){
+            System.out.println(e.getMessage());
+        }
     }
     public int showOrderID(){
         return order.getOrderId();
